@@ -11,6 +11,9 @@ public class MyButton extends JButton {
         this.setText(text);
         this.setFocusable(false);
         this.setFont(new Font("Arial", Font.BOLD, 20));
+        this.setBackground(Color.GRAY);
+        this.setForeground(Color.WHITE);
+        this.setBorder(BorderFactory.createEtchedBorder());
     }
 
     /**
