@@ -106,6 +106,12 @@ public class MyFrame extends JFrame {
         // Creating a new MyButton object with the button label
         MyButton button = new MyButton(buttonLabel);
         button.addActionListener(e -> {
+            // Checking if the game is over
+            if (gameState.getGameOver()) {
+                JOptionPane.showMessageDialog(this, "Game is over. Please restart the game.", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
             char currentPlayer = gameState.getCurrentPlayer();
 
             // Attempting to make a move in the game state
