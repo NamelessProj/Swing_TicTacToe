@@ -18,7 +18,7 @@ public class MyButton extends JButton {
      * @param newText The new text to set on the button.
      */
     public void clicked(String newText) {
-        //this.setEnabled(false);
+        this.setEnabled(false);
         this.setText(newText);
     }
 }
