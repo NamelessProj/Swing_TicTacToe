@@ -3,6 +3,7 @@ public class GameState {
     private int turn;
     private char currentPlayer;
     private char[][] board;
+    private boolean gameOver = false;
 
     /**
      * Constructor to initialize the game state
@@ -60,12 +61,18 @@ public class GameState {
         // Check rows and columns
         for (int i = 0; i < size; i++) {
             if (checkRow(i, player) || checkColumn(i, player)) {
+                gameOver = true;
                 return true;
             }
         }
 
-        // Check diagonals
-        return checkDiagonal(player);
+        // Check if the game is over
+        boolean won = checkDiagonal(player);
+
+        if (won)
+            gameOver = true;
+
+        return won;
     }
 
     /**
@@ -125,5 +132,13 @@ public class GameState {
      */
     public char getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    /**
+     * Method to get if the game is over
+     * @return true if the game is over, false otherwise
+     */
+    public boolean getGameOver() {
+        return gameOver;
     }
 }
