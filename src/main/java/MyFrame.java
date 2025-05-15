@@ -28,7 +28,6 @@ public class MyFrame extends JFrame {
         label.setFont(new Font("Arial", Font.BOLD, 30));
         label.setForeground(Color.WHITE);
 
-
         // Creating all panels
         JPanel panelNorth = new JPanel();
         JPanel panelSouth = new JPanel();
@@ -77,25 +76,7 @@ public class MyFrame extends JFrame {
         for (int i = 0; i < gameSize; i++) {
             for (int j = 0; j < gameSize; j++) {
                 int number = i * gameSize + j + 1;
-                String buttonLabel = String.valueOf(number);
-                MyButton button = new MyButton(buttonLabel);
-                button.addActionListener(e -> {
-                    char currentPlayer = gameState.getCurrentPlayer();
-                    if (gameState.makeMove(number)) {
-                        button.clicked(String.valueOf(currentPlayer));
-                        label.setText("Player " + gameState.getCurrentPlayer() + " turn");
-                        if (gameState.checkWinner(currentPlayer)) {
-                            System.out.println("Player " + currentPlayer + " wins!");
-                            label.setText("Player " + currentPlayer + " wins!");
-                            JOptionPane.showMessageDialog(this, "Player " + currentPlayer + " wins!");
-                        } else if (gameState.isDraw()) {
-                            label.setText("It's a draw!");
-                            JOptionPane.showMessageDialog(this, "It's a draw!");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Invalid move", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                });
+                MyButton button = getMyButton(number, gameState, label);
                 panelCenter.add(button);
             }
         }
@@ -109,5 +90,45 @@ public class MyFrame extends JFrame {
 
         // Setting the visible property of the frame
         this.setVisible(true);
+    }
+
+    /**
+     * Creates a button for the Tic Tac Toe game.
+     *
+     * @param number     The number associated with the button.
+     * @param gameState  The current state of the game.
+     * @param label      The label to update the player's turn.
+     * @return          A MyButton object configured for the game.
+     */
+    private MyButton getMyButton(int number, GameState gameState, JLabel label) {
+        String buttonLabel = String.valueOf(number);
+
+        // Creating a new MyButton object with the button label
+        MyButton button = new MyButton(buttonLabel);
+        button.addActionListener(e -> {
+            char currentPlayer = gameState.getCurrentPlayer();
+
+            // Attempting to make a move in the game state
+            if (gameState.makeMove(number)) {
+                button.clicked(String.valueOf(currentPlayer));
+                label.setText("Player " + gameState.getCurrentPlayer() + " turn");
+
+                // Check if the current player has won or if the game is a draw
+                if (gameState.checkWinner(currentPlayer)) {
+                    // If the player wins, show a message and update the label
+                    System.out.println("Player " + currentPlayer + " wins!");
+                    label.setText("Player " + currentPlayer + " wins!");
+                    JOptionPane.showMessageDialog(this, "Player " + currentPlayer + " wins!");
+                } else if (gameState.isDraw()) {
+                    // If the game is a draw, show a message and update the label
+                    label.setText("It's a draw!");
+                    JOptionPane.showMessageDialog(this, "It's a draw!");
+                }
+            } else {
+                // If the move is invalid, show an error message
+                JOptionPane.showMessageDialog(this, "Invalid move", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        return button;
     }
 }
