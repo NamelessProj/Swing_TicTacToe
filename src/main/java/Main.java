@@ -2,8 +2,8 @@ import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        int MAX_SIZE = 10;
-        int MIN_SIZE = 2;
+        final int MAX_SIZE = 10;
+        final int MIN_SIZE = 2;
         int gameSize;
 
         while (true) {
