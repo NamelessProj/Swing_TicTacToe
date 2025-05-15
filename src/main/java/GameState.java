@@ -1,8 +1,8 @@
 public class GameState {
     private final int size;
+    private final char[][] board;
     private int turn;
     private char currentPlayer;
-    private final char[][] board;
     private boolean gameOver = false;
 
     /**
