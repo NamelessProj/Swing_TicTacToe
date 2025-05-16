@@ -122,13 +122,14 @@ public class MyFrame extends JFrame {
                 // Check if the current player has won or if the game is a draw
                 if (gameState.checkWinner(currentPlayer)) {
                     // If the player wins, show a message and update the label
-                    System.out.println("Player " + currentPlayer + " wins!");
-                    label.setText("Player " + currentPlayer + " wins!");
-                    JOptionPane.showMessageDialog(this, "Player " + currentPlayer + " wins!");
+                    String winMsg = "Player " + currentPlayer + " wins!";
+                    label.setText(winMsg);
+                    JOptionPane.showMessageDialog(this, winMsg);
                 } else if (gameState.isDraw()) {
                     // If the game is a draw, show a message and update the label
-                    label.setText("It's a draw!");
-                    JOptionPane.showMessageDialog(this, "It's a draw!");
+                    String drawMsg = "It's a draw!";
+                    label.setText(drawMsg);
+                    JOptionPane.showMessageDialog(this, drawMsg);
                 }
             } else {
                 // If the move is invalid, show an error message
