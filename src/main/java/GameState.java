@@ -14,11 +14,6 @@ public class GameState {
         this.turn = 0;
         this.currentPlayer = 'X';
         this.board = new char[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                board[i][j] = ' ';
-            }
-        }
     }
 
     /**
@@ -30,7 +25,7 @@ public class GameState {
         int row = (input - 1) / size;
         int col = (input - 1) % size;
 
-        if (row < 0 || row >= size || col < 0 || col >= size || board[row][col] != ' ')
+        if (row < 0 || row >= size || col < 0 || col >= size || board[row][col] != '\0')
             return false; // Invalid move
 
         board[row][col] = currentPlayer;
