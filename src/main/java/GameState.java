@@ -31,10 +31,7 @@ public class GameState {
         board[row][col] = currentPlayer;
         turn++;
 
-        if (turn % 2 == 0) {
-            currentPlayer = 'X';
-        } else
-            currentPlayer = 'O';
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; // Switch player
 
         return true; // Move made successfully
     }
