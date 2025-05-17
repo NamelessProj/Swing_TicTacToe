@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://img.shields.io/badge/Java-v.24.0.1-blue" alt="Java version"/>
+<img src="https://img.shields.io/badge/Java-v.24.0.1-orange" alt="Java version"/>
 </p>
 
 <p align="center">
