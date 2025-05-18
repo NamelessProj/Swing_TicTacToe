@@ -8,9 +8,11 @@ public class Main {
 
         while (true) {
             String input = JOptionPane.showInputDialog("Enter the size of the game board (between " + MIN_SIZE + " and " + MAX_SIZE + "):");
-            if (input == null) {
+
+            // Exit if the user cancels the input dialog
+            if (input == null)
                 System.exit(0);
-            }
+
             try {
                 gameSize = Integer.parseInt(input);
                 if (gameSize < MIN_SIZE || gameSize > MAX_SIZE) {
