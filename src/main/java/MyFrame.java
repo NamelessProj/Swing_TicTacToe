@@ -112,14 +112,13 @@ public class MyFrame extends JFrame {
                 return;
             }
 
-            char currentPlayer = gameState.getCurrentPlayer();
-
             // Attempting to make a move in the game state
             if (gameState.makeMove(number)) {
+                char currentPlayer = gameState.getCurrentPlayer();
                 button.clicked(String.valueOf(currentPlayer));
 
                 // Check if the current player has won or if the game is a draw
-                if (gameState.checkWinner(currentPlayer)) {
+                if (gameState.checkWinner()) {
                     // If the player wins, show a message and update the label
                     String winMsg = "Player " + currentPlayer + " wins!";
                     label.setText(winMsg);
