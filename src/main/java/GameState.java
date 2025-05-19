@@ -42,7 +42,10 @@ public class GameState {
      * @return true if the game is over, false otherwise
      */
     public boolean isDraw() {
-        return turn == size * size;
+        boolean isDraw = turn == size * size;
+        if (isDraw)
+            gameOver = true; // Set game over if it's a draw
+        return isDraw;
     }
 
     /**
@@ -133,5 +136,13 @@ public class GameState {
      */
     public boolean getGameOver() {
         return gameOver;
+    }
+
+    /**
+     * Method to get the size of the board
+     * @return The size of the board
+     */
+    public int getSize() {
+        return size;
     }
 }
