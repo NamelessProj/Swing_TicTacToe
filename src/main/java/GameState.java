@@ -55,20 +55,19 @@ public class GameState {
 
     /**
      * Method to check if the current player has won
-     * @param player The current player ('X' or 'O')
      * @return true if the current player has won, false otherwise
      */
-    public boolean checkWinner(char player) {
+    public boolean checkWinner() {
         // Check rows and columns
         for (int i = 0; i < size; i++) {
-            if (checkRow(i, player) || checkColumn(i, player)) {
+            if (checkRow(i) || checkColumn(i)) {
                 gameOver = true;
                 return true;
             }
         }
 
         // Check if the game is over
-        boolean won = checkDiagonal(player);
+        boolean won = checkDiagonal();
 
         if (won)
             gameOver = true;
@@ -79,12 +78,11 @@ public class GameState {
     /**
      * Method to check if a row has the same player
      * @param row The row index
-     * @param player The current player ('X' or 'O')
      * @return true if the row has the same player, false otherwise
      */
-    private boolean checkRow(int row, char player) {
+    private boolean checkRow(int row) {
         for (int j = 0; j < size; j++) {
-            if (board[row][j] != player) {
+            if (board[row][j] != currentPlayer) {
                 return false;
             }
         }
@@ -94,12 +92,11 @@ public class GameState {
     /**
      * Method to check if a column has the same player
      * @param col The column index
-     * @param player The current player ('X' or 'O')
      * @return true if the column has the same player, false otherwise
      */
-    private boolean checkColumn(int col, char player) {
+    private boolean checkColumn(int col) {
         for (int i = 0; i < size; i++) {
-            if (board[i][col] != player) {
+            if (board[i][col] != currentPlayer) {
                 return false;
             }
         }
@@ -108,18 +105,17 @@ public class GameState {
 
     /**
      * Method to check if a diagonal has the same player
-     * @param player The current player ('X' or 'O')
      * @return true if a diagonal has the same player, false otherwise
      */
-    private boolean checkDiagonal(char player) {
+    private boolean checkDiagonal() {
         boolean leftDiagonal = true;
         boolean rightDiagonal = true;
 
         for (int i = 0; i < size; i++) {
-            if (board[i][i] != player) {
+            if (board[i][i] != currentPlayer) {
                 leftDiagonal = false;
             }
-            if (board[i][size - 1 - i] != player) {
+            if (board[i][size - 1 - i] != currentPlayer) {
                 rightDiagonal = false;
             }
         }
