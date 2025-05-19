@@ -117,7 +117,6 @@ public class MyFrame extends JFrame {
             // Attempting to make a move in the game state
             if (gameState.makeMove(number)) {
                 button.clicked(String.valueOf(currentPlayer));
-                label.setText("Player " + gameState.getCurrentPlayer() + " turn");
 
                 // Check if the current player has won or if the game is a draw
                 if (gameState.checkWinner(currentPlayer)) {
@@ -130,6 +129,9 @@ public class MyFrame extends JFrame {
                     String drawMsg = "It's a draw!";
                     label.setText(drawMsg);
                     JOptionPane.showMessageDialog(this, drawMsg);
+                } else {
+                    gameState.changePlayer();
+                    label.setText("Player " + gameState.getCurrentPlayer() + " turn");
                 }
 
                 if (gameState.getGameOver()) {
