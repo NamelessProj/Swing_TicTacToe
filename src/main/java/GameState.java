@@ -32,9 +32,14 @@ public class GameState {
         board[row][col] = currentPlayer;
         turn++;
 
-        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; // Switch player
-
         return true; // Move made successfully
+    }
+
+    /**
+     * Method to change the current player
+     */
+    public void changePlayer() {
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; // Switch player
     }
 
     /**
