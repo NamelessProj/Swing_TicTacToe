@@ -131,6 +131,18 @@ public class MyFrame extends JFrame {
                     label.setText(drawMsg);
                     JOptionPane.showMessageDialog(this, drawMsg);
                 }
+
+                if (gameState.getGameOver()) {
+                    // If the game is over, ask the user if they want to restart
+                    int resp = JOptionPane.showConfirmDialog(this, "Game is over. Do you want to restart?", "Game Over", JOptionPane.YES_NO_OPTION);
+                    if (resp == JOptionPane.YES_OPTION) {
+                        // Restart the game
+                        this.dispose();
+                        new MyFrame(gameState.getSize());
+                    } else
+                        System.exit(0); // Exit the application
+                }
+
             } else {
                 // If the move is invalid, show an error message
                 JOptionPane.showMessageDialog(this, "Invalid move", "Error", JOptionPane.ERROR_MESSAGE);
