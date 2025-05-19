@@ -149,6 +149,7 @@ public class MyFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Invalid move", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
+
         return button;
     }
 }
